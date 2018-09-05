@@ -10,20 +10,21 @@ public class MsgServer {
 
     public MsgServer() throws Exception {
 
-	this.server = new ServerSocket(5555, 0, InetAddress.getLoopbackAddress());
+	this.server = new ServerSocket(0, 0, InetAddress.getLoopbackAddress());
 
     }
 
     private void listen() throws Exception {
-	String data = null;
+	String data = "Start";
 	Socket client = this.server.accept();
 	String clientAddress = client.getInetAddress().getHostAddress();
 	System.out.println("\r\nNew connection from " + clientAddress);
 
 	BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-	while ((data = in.readLine()) != null) {
-	    System.out.println("\r\n" + data);
-	}
+
+	data = in.readLine();
+	System.out.println("\r\n" + data);
+
     }
 
     public InetAddress getSocketAddress() {
