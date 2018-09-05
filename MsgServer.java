@@ -10,7 +10,7 @@ public class MsgServer {
 
     public MsgServer() throws Exception {
 
-	this.server = new ServerSocket(0, 0, InetAddress.getLoopbackAddress());
+	this.server = new ServerSocket(5555, 0, InetAddress.getLoopbackAddress());
 
     }
 

@@ -15,7 +15,7 @@ int main(int argc , char *argv[])
     }
     server.sin_addr.s_addr = inet_addr("127.0.0.1");
     server.sin_family = AF_INET;
-    server.sin_port = htons(61081);
+    server.sin_port = htons(5555);
     
     if (connect(sock , (struct sockaddr *)&server , sizeof(server)) < 0)
     {
@@ -24,10 +24,13 @@ int main(int argc , char *argv[])
     }
     puts("Connected\n");
 
-    if( send(sock , argv[1] , strlen(argv[1]) , 0) < 0)
+    printf(argc);
+    for(int i=1; i<agrc; i++){
+        if( send(sock , argv[i] , strlen(argv[i]) , 0) < 0)
         {
             puts("Send failed");
             return 1;
         }
+    }
     return 0;
 }
